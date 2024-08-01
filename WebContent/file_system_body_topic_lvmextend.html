@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>file_system_body_topic_lvmextend</title>
+</head>
+<body>
+
+<pre>
+Increade File system :-
+
+EXT :-
+
+
+
+
+	Vgextend vg_App /dev/sdc  
+	Lvextend -L +100G /dev/vg_app/app
+	Resize2fs /dev/vg_app/app
+	E2fsck -f /dev/vg_app/app
+	Mount -a
+
+XFS :-
+  
+#vgextend vg_App /dev/sdc  
+#lvextend -L +100G /dev/vg_app/app
+#xfs_growfs /dev/vg_data/lv_export
+
+=======================================
+
+[root@susi ~]# vgextend vg_app /dev/sdb2
+  Volume group "vg_app" successfully extended
+[root@susi ~]# lvs
+  LV   VG     Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  root centos -wi-ao---- <17.00g
+  swap centos -wi-ao----   2.00g
+  app  vg_app -wi-ao---- 300.00m
+[root@susi ~]# lvextend -L +500M /dev/mapper/vg_app-app
+  Size of logical volume vg_app/app changed from 300.00 MiB (75 extents) to 800.00 MiB (200 extents).
+  Logical volume vg_app/app successfully resized.
+[root@susi ~]# lvs
+  LV   VG     Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  root centos -wi-ao---- <17.00g
+  swap centos -wi-ao----   2.00g
+  app  vg_app -wi-ao---- 800.00m
+[root@susi ~]# vgs
+  VG     #PV #LV #SN Attr   VSize   VFree
+  centos   1   2   0 wz--n- <19.00g      0
+  vg_app   2   1   0 wz--n- 992.00m 192.00m
+[root@susi ~]#
+
+[root@susi ~]# df -h /app
+Filesystem              Size  Used Avail Use% Mounted on
+/dev/mapper/vg_app-app  297M   16M  282M   6% /app
+[root@susi ~]# xfs_growfs /dev/mapper/vg_app-app
+meta-data=/dev/mapper/vg_app-app isize=512    agcount=4, agsize=19200 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0 spinodes=0
+data     =                       bsize=4096   blocks=76800, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=855, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 76800 to 204800
+[root@susi ~]# df -h /app
+Filesystem              Size  Used Avail Use% Mounted on
+/dev/mapper/vg_app-app  797M   16M  782M   2% /app
+[root@susi ~]#
+
+
+=============================================
+	
+Create 100% free space for file system :-
+
+lvcreate -n app -l 100%FREE /dev/vg_app/app
+
+Decrease file system :-
+
+ -->umount the file system umount /app
+   -->check file system e2fsck. E2fsck -f /dev/vg_app/app
+   -->Reduce the file system resize2fs /dev/vg_app/app 180G
+   -->Decrese the lv using lvreduce -L 180G /dev/vg_app/app 
+   --> mount /app
+
+Xfs file system :-
+
+# 
+
+
+
+</pre>
+</body>
+</html>

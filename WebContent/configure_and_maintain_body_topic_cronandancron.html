@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_cronandancron</title>
+</head>
+<body>
+
+<pre>
+Cron – is a daemon used to run scheduled tasks such as system backups, updates and many more. It is suitable for running scheduled tasks on machines that will run continuously 24X7 such as servers.
+
+
+Anacron is used to run commands periodically with a frequency defined in days. It works a little different from cron; assumes that a machine will not be powered on all the time.
+Anacron remembers the scheduled jobs if the system is not running at the time when the job is scheduled. The job is then exectuted as soon as the system is up. However, Anacron can only run a job once a day
+ 
+CRON :-
+
+/etc/crontab -- for reference
+
+Schedule :-
+
+*/5 * * * * ===> every five min
+6 0 * * *  ==> 12:05 AM
+6 0 */3 * *  ==> every 3 days 12:06 AM
+
+
+Proper schedule :-
+
+#cd /var/spool/cron
+#vi root
+*/5 * * * * hostname
+#vi appuser
+
+/var/log/cron ==> cron logs
+
+ANACRON :-
+
+/etc/anacrontab  
+/var/spool/anacron
+
+
+
+</pre>
+</body>
+</html>

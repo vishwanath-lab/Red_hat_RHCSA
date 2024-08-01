@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>operate_server_body_topic_bootprocess description</title>
+</head>
+<body>
+
+<h3>BIOS :-</h3>
+<ul>
+<li>Basic I/O System</li>
+<li>Independent</li>
+<li>Primary function to find and execute the boot loader. </li>
+<li>Perform POST (Power on self test) - Check basic check of the hardware.</li>
+<li>After POST success only BIOS will check for boot devices.</li>
+<li>Boot devices ( HDD or USB or DVD or etc)</li>
+<li>Once Boot loader found, the BIOS will run the boot loader.</li>
+</ul>
+
+<h3>Boot Loaders :-</h3>
+<ul>
+<li>	 Typically GRUB boot loader will use.</li>
+<li>	 GRUB ( Grand Unified Bootloader)</li>
+<li>	 Boot loader starts the OS</li>
+<li>	 Boot loader can start OS with different options like single user,etc..</li>
+</ul>
+
+<h3>Initial RAM disk :-</h3>
+<ul>
+<li>	 Initrd - temporary file system that is loaded from disk and stored in memory.</li>
+<li>	 This contains modules required to load the permanent OS file system.</li>
+<li>	 Once root file system mounted and OS will continue to run the remaining OS.</li>
+</ul>
+	
+<h3>/boot directory :-</h3>
+<ul>
+<li>	 Contains the files required to boot linux.</li>
+<li>	 Initrd</li>
+<li>	 Kernel</li>
+<li>	 Boot loader configuration.</li>
+<li>	 #cd /boot; ls -l</li>
+</ul>
+
+<h3>Run Levels :-</h3>
+<ul>
+<li> 	 0 - Sutdown</li>
+<li>	 1,S,s - Single user mode</li>
+<li>	 2 - Multi user mode with graphics( debian/ububtu)</li>
+<li>	 3 - Multi user mode with text (RHEL/Centos)</li>
+<li>	 4 - Undfined</li>
+<li>	 5 - multi user mode with GUI ( RHEL/CentOS)</li>
+<li>	 6 - Reboot</li>
+</ul>
+
+
+<h3>Init :-</h3>
+<ul>
+<li>	 Generally Run lelvel are controlled by init program</li>
+<li>	 Edit  /etc/inittab for changing run level.</li>
+<li>	 This will start one time at a time</li>
+<li>	 This is on old OS.latest replaced with systemd</li>
+</ul>
+	
+<h3>Systemd :-</h3>
+<ul>
+<li>	 Parallel booting</li>
+<li>	 Systemd will use target instead of run level.</li>
+<li>	 #cd /etc/systemd/system ; ls -l *target*</li>
+<li>	 #systemctl set-default graphical.target  ==> change default run level target</li>
+</ul>
+
+
+
+
+	
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_workingwithfiledirectory description</title>
+</head>
+<body>
+
+Directory - just like the folder<br>
+File - contains data<br><br>
+
+cd . - current directory<br>
+cd .. - parent directory<br>
+cd - change to the previous directory<br><br>
+
+File :-<br><br>
+
+Mostly all use vi or nano or vim <br><br>
+
+#vi test.txt<br>
+i - insert text<br>
+:q! --> quit immediately without save<br>
+:wq! --> save quickly with save<br>
+Esc --> escape from <br>
+yy --> copy<br>
+p - past below the cursor<br>
+U - undo<br>
+P - past above my cursor<br>
+dd - cut<br>
+5dd - 5 line from cursor<br>
+5yy - past all the 5 line<br>
+Shift+G - go to bottom<br>
+1+Shift+G - Go to the first line<br>
+cc - remove entire line and change to insert mode<br>
+/search - search pattern<br>
+R - replace mode<br>
+Replace the word with other word<br><br>
+
+
+[root@susi etc]# cd ~susi<br>
+[root@susi susi]# ls<br>
+dir1  dir.tar.gz  test1  test2<br>
+[root@susi susi]# vi test1<br>
+test4<br>
+test5<br>
+~<br>
+~<br>
+:%s/test/testing<br><br>
+
+[root@susi susi]# more test1<br>
+testing1<br>
+testing2<br>
+testing3<br>
+testing4<br>
+testing5<br><br>
+
+[root@susi susi]#<br><br>
+
+:%s/test/testing/g ---> replace globally otherwise it will replace only first word<br><br>
+
+:!ls /etc --> list the file inside the vi editor<br><br>
+
+
+
+</body>
+</html>

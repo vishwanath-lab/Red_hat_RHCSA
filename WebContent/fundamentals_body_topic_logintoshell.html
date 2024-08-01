@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_logintoshell description</title>
+</head>
+<body>
+<ul>
+<li>Default user interface to linux operating system.</li>
+<li>Shell  It gathers input from you and executes programs based on that input. When a program finishes executing, it displays that program's output.
+	
+	# - root user ( super user)<br>
+	$ - regular user<br>
+	~ - tilde<br>
+</li>
+<li>By default root direct login will be disabled on /etc/ssh/sshd_config
+	
+	[root@susi etc]# grep -i 'permitroot' /etc/ssh/sshd_config<br>
+	#PermitRootLogin yes<br>
+	# the setting of "PermitRootLogin without-password".<br>
+	[root@susi etc]#<br><br>
+	
+	Any changes on sshd_conf file and you must restart sshd<br><br>
+	
+	#systemctl restart sshd<br><br>
+</li>
+<li>Copy to the other system use scp 
+	
+	#scp filename root@remoteIP:/home/<br>
+</li>
+<li>Switch user
+	
+	#su - root<br><br>
+	
+	su - invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.<br>
+	su just switches the user, providing a normal shell with an environment nearly the same as with the old user<br><br>
+	
+	[susi@susi ~]$ su<br>
+	Password:<br>
+	[root@susi susi]# ls<br>
+	[root@susi susi]# ls -lart<br>
+	total 16<br>
+	-rw-r--r--. 1 susi susi 231 Apr 10 20:53 .bashrc<br>
+	-rw-r--r--. 1 susi susi 193 Apr 10 20:53 .bash_profile<br>
+	-rw-r--r--. 1 susi susi  18 Apr 10 20:53 .bash_logout<br>
+	drwxr-xr-x. 3 root root  18 Aug 13 09:02 ..<br>
+	-rw-------. 1 susi susi  31 Aug 13 09:08 .bash_history<br>
+	drwx------. 2 susi susi  83 Aug 13 09:08 .<br>
+	[root@susi susi]# <br><br>
+	
+	[susi@susi ~]$ su -<br>
+	Password:<br>
+	Last login: Mon Aug 13 10:49:25 EDT 2018 on pts/1<br>
+	[root@susi ~]# ls<br>
+	anaconda-ks.cfg<br>
+	[root@susi ~]# ls -lart<br>
+	total 28<br>
+	-rw-r--r--.  1 root root  129 Dec 28  2013 .tcshrc<br>
+	-rw-r--r--.  1 root root  100 Dec 28  2013 .cshrc<br>
+	-rw-r--r--.  1 root root  176 Dec 28  2013 .bashrc<br>
+	-rw-r--r--.  1 root root  176 Dec 28  2013 .bash_profile<br>
+	-rw-r--r--.  1 root root   18 Dec 28  2013 .bash_logout<br>
+	dr-xr-xr-x. 17 root root  224 Aug 13 09:02 ..<br>
+	-rw-------.  1 root root 1468 Aug 13 09:03 anaconda-ks.cfg<br>
+	dr-xr-x---.  2 root root  135 Aug 13 09:08 .<br>
+	-rw-------.  1 root root  130 Aug 13 10:49 .bash_history<br>
+	[root@susi ~]# exit<br><br>
+	
+	
+</ul>
+
+</body>
+</html>

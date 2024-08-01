@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_networkmanager</title>
+</head>
+<body>
+<pre>
+Network device status :-
+
+#nmcli dev status 
+
+#nm-connection-editor ==> gui based configuration
+
+#nmtui ==> text based gui
+
+
+#nmcli con show ==> connection status
+
+#cd /etc/sysconfig/network-scripts ==> have all the n/w configuration
+
+#nmcli con add con-name "susi" autoconnect yes type ethernet ifname eth1  ==> adding new connections..This will create with dhcp connectiion..You can verify unde /etc/sysconfig/network-scripts/ifcfg-eth1 file..
+
+#nmcli con show ==>status
+#nmcli dev show ==> device status
+
+
+#nmcli con add con-name "susi-static" type ethernet ifname eth1 ip4 10.0.0.20 gw4 10.0.0.1  ==> static ip configuration
+
+#nmcli con down "susi" ===> make down for connection
+#nmcli con up "susi" ==> make conenction up
+
+
+#nmcli con mod "susi-static" autoconnect yes  ==> modify the connection 
+
+#nmcli con del "susi" ==> delete connection name
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>

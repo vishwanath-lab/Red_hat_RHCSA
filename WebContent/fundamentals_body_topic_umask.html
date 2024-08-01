@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_umask description</title>
+</head>
+<body>
+
+<h4>Umask - User mask</h4>
+
+New files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask.<br><br>
+
+#umask - to know current umask set<br>
+0022<br><br>
+
+Masking or hiding those permission we don't want to default to have.<br>
+By default without umask file permission is 666 and directory is 777<br><br>
+
+If we set mask 0022 means file permission should be 666-022 = 644 (rw-r-r) <br><br>
+
+Directory 777-022 =755 = rwx-rx-rx<br><br>
+
+#cd /tmp<br>
+#touch test<br>
+#mkdir tesdir<br><br>
+
+ 
+#umask 266 ==> temp set<br>
+#touch test3  r--<br><br>
+
+Persistance set umask :-<br>
+
+#vi /etc/profile (or)<br>
+#vi bashrc  <br><br>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

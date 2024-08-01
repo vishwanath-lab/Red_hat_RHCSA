@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>storage_body_topic_swap</title>
+</head>
+<body>
+<pre>
+Swapping is necessary for two important reasons :-
+	1) when the system requires more memory than is physically available, the kernel swaps out less used pages and gives memory to the current application (process) that needs the memory immediately.
+	2)  A significant number of the pages used by an application during its startup phase may only be used for initialization and then never used again. The system can swap out those pages and free the memory for other applications or even for the disk cache.
+
+
+
+
+
+[root@rhel7 ~]# lvs
+  LV            VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  app           vg_app -wi-ao----  5.00g                                        
+  kvm           vg_app -wi-ao---- 50.98g                                        
+  home          vg_os  -wi-ao----  4.88g                                        
+  root          vg_os  -wi-ao----  9.77g                                        
+  swap          vg_os  -wi-ao----  7.81g                                        
+  var           vg_os  -wi-ao----  5.86g                                        
+  var_log       vg_os  -wi-ao----  5.86g                                        
+  var_log_audit vg_os  -wi-ao----  5.86g                                        
+[root@rhel7 ~]#
+[root@rhel7 ~]#
+[root@rhel7 ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:          15882        1342        8343           1        6196       14201
+Swap:          7999           0        7999
+[root@rhel7 ~]#
+[root@rhel7 ~]#
+[root@rhel7 ~]# cd /dev/vg_os/
+[root@rhel7 vg_os]# ls
+home  root  swap  var  var_log  var_log_audit
+[root@rhel7 vg_os]# pwd
+/dev/vg_os
+[root@rhel7 vg_os]# swapoff -v /dev/vg_os/swap
+swapoff /dev/vg_os/swap
+[root@rhel7 vg_os]#
+[root@rhel7 vg_os]#[root@rhel7 vg_os]# lvresize /dev/vg_os/swap -L +2G
+  Size of logical volume vg_os/swap changed from 7.81 GiB (2000 extents) to 9.81 GiB (2512 extents).
+  Logical volume swap successfully resized.
+[root@rhel7 vg_os]#
+[root@rhel7 vg_os]# mkswap /dev/vg_os/swap
+mkswap: /dev/vg_os/swap: warning: wiping old swap signature.
+Setting up swapspace version 1, size = 10289148 KiB
+no label, UUID=7f522d90-5eec-4113-8e19-320c1cf28022
+[root@rhel7 vg_os]# swapon -va
+swapon /dev/mapper/vg_os-swap
+swapon: /dev/mapper/vg_os-swap: found swap signature: version 1, page-size 4, same byte order
+swapon: /dev/mapper/vg_os-swap: pagesize=4096, swapsize=10536091648, devsize=10536091648
+[root@rhel7 vg_os]#
+[root@rhel7 vg_os]# lvs
+  LV            VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  app           vg_app -wi-ao----  5.00g
+  kvm           vg_app -wi-ao---- 50.98g
+  home          vg_os  -wi-ao----  4.88g
+  root          vg_os  -wi-ao----  9.77g
+  swap          vg_os  -wi-ao----  9.81g
+  var           vg_os  -wi-ao----  5.86g
+  var_log       vg_os  -wi-ao----  5.86g
+  var_log_audit vg_os  -wi-ao----  5.86g
+[root@rhel7 vg_os]#
+[root@rhel7 vg_os]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:          15882        1338        8336           1        6207       14206
+Swap:         10047           0       10047
+[root@rhel7 vg_os]#
+
+
+[root@rhel7 vg_os]# more /proc/swaps
+Filename                                Type            Size    Used    Priority
+/dev/dm-1                               partition       10289148        0       -1
+[root@rhel7 vg_os]#
+
+
+</pre>
+</body>
+</html>

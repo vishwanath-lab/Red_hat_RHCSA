@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>security_body_topic_booleansetting</title>
+</head>
+<body>
+<pre>
+Boolean value are used to enable or disable specific feature for service..
+Regardless context of the directory or file
+Example - vftp can enable anonymous login
+Apache - we can enable or disable all the cgi script
+
+
+#getsebool -a ==> Current boolean value.
+
+#semanage boolean -l ==> show default boolean value available to us.
+
+#sesebool -P httpd_home_ on ==> turn on 
+
+
+</pre>
+
+</body>
+</html>

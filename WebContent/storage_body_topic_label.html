@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>storage_body_topic_label</title>
+</head>
+<body>
+<br><br>
+[root@susi ~]# mkfs -t xfs /dev/sdb1<br>
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=32000 blks<br>
+         =                       sectsz=512   attr=2, projid32bit=1<br>
+         =                       crc=1        finobt=0, sparse=0<br>
+data     =                       bsize=4096   blocks=128000, imaxpct=25<br>
+         =                       sunit=0      swidth=0 blks<br>
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1<br>
+log      =internal log           bsize=4096   blocks=855, version=2<br>
+         =                       sectsz=512   sunit=0 blks, lazy-count=1<br>
+realtime =none                   extsz=4096   blocks=0, rtextents=0<br><br>
+
+
+[root@susi ~]# xfs_admin -L app /dev/sdb1   ==> XFS file system label<br>
+writing all SBs<br>
+new label = "app"<br>
+[root@susi ~]# tune2fs -L app /dev/sdb1 ==> ext file system<br>
+[root@susi ~]#<br><br>
+
+
+<h3>Persistent mount :-</h3>
+
+
+[root@susi ~]# vi /etc/fstab<br>
+[root@susi ~]# mount -a<br>
+[root@susi ~]# df -h /app<br>
+Filesystem      Size  Used Avail Use% Mounted on<br>
+/dev/sdb1       497M   26M  472M   6% /app<br>
+[root@susi ~]# more /etc/fstab<br><br>
+
+#<br>
+# /etc/fstab<br>
+# Created by anaconda on Mon Aug 13 08:58:55 2018<br>
+#<br>
+# Accessible filesystems, by reference, are maintained under '/dev/disk'<br>
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info<br>
+#<br>
+/dev/mapper/centos-root /                       xfs     defaults        0 0<br>
+UUID=89ea5174-9c32-4320-82ab-151e73a57851 /boot xfs     defaults        0 0<br>
+/dev/mapper/centos-swap swap                    swap    defaults        0 0<br>
+<b>LABEL=app       						  /app  xfs     defaults        0 0</b><br>
+[root@susi ~]#<br><br>
+
+0 0 ===>  First one is dump and secound one is fsck order.<br>
+0 - exclude taking backup, non zero means it will take backup.<br>
+0  - exclude for fsck<br>
+1 - include fsck, 1 - first fsck , 2- second will run fsck <br><br>
+
+
+
+</body>
+</html>

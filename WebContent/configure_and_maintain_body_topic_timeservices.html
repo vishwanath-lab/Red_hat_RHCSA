@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_timeservices</title>
+</head>
+<body>
+<pre>
+<ul>
+  <li> NTP has been replaced with cronyd</li>
+  <li> Cnfiguration file - /etc/chrony.conf.</li>
+  <li> Crony  is able to synchronize the system clock faster and with better accuracy than ntpd.</li>
+  <li> After the initial synchronization, it never steps the clock so as not to affect applications.</li>
+</ul>
+
+#timedatectl chronyd
+
+#timedatectl ===> information about time configured on our server
+
+Disable NTP :-
+
+#timedatectl set-ntp false
+
+Enable :-
+
+#timedatectl set-ntp true
+
+Set timezone :-
+
+#timedatectl list-timezones ==> list all timezones
+
+#tzselect ==> manually seeing your time zone
+#timedatectl set-timezones America/Chicago  ===> Set time zone
+#timedatectl set-time 12:45:10  ==> set time
+
+#systemctl status chronyd ==> status of cronyd
+
+
+#chronyc sources -v ===> sources of NTP
+
+#chronyc tracking ==> tracking the sync process
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>

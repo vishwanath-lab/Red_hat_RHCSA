@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>operate_server_body_topic_interruptthebootprocess description</title>
+</head>
+<body>
+<h3>Recover root password :-</h3>
+<ol>
+<li>Reboot the system<br></li>
+
+<li>Go to grub menu and add the the end rd.break.. And press ctrl+x ..this will boot to the emergency mode
+	<img alt="interruptthebootprocess01" src="interruptthebootprocess01.png">
+	<img alt="interruptthebootprocess02" src="interruptthebootprocess02.png">
+</li>
+<li>Mount the /sysroot as rw
+	<img alt="interruptthebootprocess03" src="interruptthebootprocess03.png"><br>
+</li>
+<li>Do the chroot.. Chroot as act as a root director..this will provide access to passwd command<br>
+	#chroot /sysroot<br></li>
+<li>Change the root passwd<br>
+	#passwd 
+	Enter new password :-
+</li>
+<li>Relabel for selinux to recoganize <br>
+	#touch /.autorelabel <br>
+	#exit<br>
+	#exit<br>
+	<img alt="interruptthebootprocess04" src="interruptthebootprocess04.png"><br>
+</li>
+</ol>
+</body>
+</html>

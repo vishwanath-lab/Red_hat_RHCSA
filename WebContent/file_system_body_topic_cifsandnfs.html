@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>file_system_body_topic_cifsandnfs</title>
+</head>
+<body>
+
+<pre>
+CIFS - common internet file system. Its used to share the file system over the internet.. CIFS allow share from windows machine to linux machine.
+
+Samba will used for CIFS.
+
+#yum -y install samba-clients cifs-utils nfs-utils
+
+Check shares available on client machine :-
+
+#smbclient -L 10.0.0.50(file server)  
+Password of file server 
+
+Mount  CIFFS:-
+
+#mount -t cifs username=user1 //10.0.0.50/public   /app/samba
+
+Mount NFS :-
+
+#mount -t nfs 10.0.0.50:/nfsshare /app/nfs
+
+Persistent mount :-
+
+Add entry on /etc/fstab
+
+//10.0.0.50/public /app/samba cifs username=user1,password=password 0 0
+10.0.0.50:/nfsshare  /app/nfsshare nfs defaults 0 0
+
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>operate_server_body_topic_bootthesystemontargetlevel description</title>
+</head>
+<body>
+
+
+
+Check available target<br><br>
+
+#systemctl list-units --type=target<br><br>
+
+Check different type of unit configration file available<br><br>
+
+#systemctl -t help<br><br>
+
+#cd /usr/lib/systemd/system  ==> We can see lot of unit configuration file.<br>
+#more sshd.services ==> unit configuration file of sshd<br><br>
+
+ExecStartPre -- Before service start execute this script<br>
+ExecStart -- upon starting execute this script<br>
+ExecReload - Reload the service<br><br>
+
+Depentancy on multi user target :-<br><br>
+
+#systemctl list-dependencies multi-user.target  ==> this will list what and all services will call when system load multi user taget<br><br>
+
+Current target :-<br><br>
+
+# systemctl get-default<br><br>
+
+4 common targets :-
+<ol>
+<li> Multi user target - multi user login.. Command text based</li>
+<li> Graphical.target - GUI based ( # systemctl list-dependencies graphical.target)</li>
+<li> Emergency.target - This will boot the system and mount root file system as read only file system.</li>
+<li> Rescue.target - Boot with single user environment with minimal loaded for troubleshooting </li>
+</ol>
+<br><br>
+Move the target manually :-<br><br>
+
+#systemctl isolate multi-user.target   ==> This will switch to multi-user target<br>
+#systemctl set-default multi-user.target ==> set the target permanently..need to reboot after change the new target.<br><br>
+
+#system<br><br>
+
+Configuration location :-<br><br>
+
+#cd /usr/lib/systemd/system/  ==> all of our system unit configuration file that ship with system.<br>
+#cd /etc/systemd/system ==> additional unit configuration by include program, customes services( apache,etc) <br><br>
+
+Boot with rescue mode :-<br><br>
+
+
+On grub configuration :- <br><br>
+<img alt="grubconfiguration" src="bootthesystemontargetlevel01.png">
+
+
+
+Add systemd.unit=rescue.target<br><br>
+<img alt="systemd.unit" src="bootthesystemontargetlevel02.png">
+
+
+
+
+
+
+
+</body>
+</html>

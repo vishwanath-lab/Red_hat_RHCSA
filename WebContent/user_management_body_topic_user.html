@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>user_management_body_topic_user</title>
+</head>
+<body>
+<pre>
+Uid - user id 
+Gid - group id
+GGID - Secondary group
+
+Root user UID - 0
+
+ 1 to 200 should be statically allocated by the system  only for redhat processes, and shall not be created by applications
+	201- 999 -  this can be used by applications for system users 
+
+
+/etc/passwd -- user account associated with the system
+X - password field and linked to /etc/shadow file
+/sbin/nologin - not allow to login shell
+/etc/shadown - password information
+/etc/login.defs --> user management details
+
+Create :-
+
+#groupadd -g 999 susi
+#useeradd -u 999 -g 999 -c "susindran" -m -d /home/susi -s /bin/bash susi 
+#passwd susi
+
+#usermod -L susi ==> lock the user
+#usermod -U susi ==> unlock the user
+#passwd -L susi ==> lock the password
+#id -a susi==> user id details
+#userdel -r susi ==> remove user with home directory
+#userdel susi ==> delete user without remove home directory
+
+
+
+</pre>
+</body>
+</html>

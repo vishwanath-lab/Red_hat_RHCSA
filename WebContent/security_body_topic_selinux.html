@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>security_body_topic_selinux</title>
+</head>
+<body>
+<pre>
+Selinux - Secure linux
+
+	• Selinux defines a set of rules that determine what process can access specific files and location on a filesystem.
+	• Context is assigned to every process, directory,port which is used to determine if a process can access that specific resource.
+
+Selinux Modes :-
+	
+	Enforce (1) - Will will disable incase rule not match
+	Permissive (0) - It will allow the job but will log the warning message in the log file.
+	Disable - Selinux completely disabled
+
+Boolean :-
+
+	• Boolean is a conditional rule that allows runtime modification of the security policy without reload. 
+
+
+Check selinux boolean status :-
+
+[root@uswv1vxap008a ~]# semanage boolean -l |grep -i cron
+cron_userdomain_transition     (on   ,   on)  Allow cron to userdomain transition
+
+[root@uswv1vxap008a ~]# getsebool -a |grep -i cron
+cron_can_relabel --> off
+cron_system_cronjob_use_shares --> off
+cron_userdomain_transition --> on
+fcron_crond --> off
+[root@uswv1vxap008a ~]#
+
+Set permissive or enforcing :-
+
+Status check :-
+
+[root@susi ~]# getenforce
+Disabled
+[root@susi ~]# sestatus
+SELinux status:                 disabled
+[root@susi ~]# setenforce 0  <== permissive
+[root@susi ~]# setenforce 1 <== Enforcing
+
+Permanent change ==> edit /etc/sysconfig/selinux file and reboot the server
+
+
+
+
+
+
+</pre>
+</body>
+</html>

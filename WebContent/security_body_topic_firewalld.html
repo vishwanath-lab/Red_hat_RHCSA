@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>security_body_topic_firewalld</title>
+</head>
+<body>
+<pre>
+Install firewalld :-
+
+#yum install -y  firewalld firewall-config
+
+#systemctl start firewalld
+#systemctl enable firewalld
+
+Change on Firewall rule :-
+
+	1) Run time change ==> not required reload. This is not persistent one. Once server reboot or firewalld restart and this will disappear.
+	2) Permanent change  ==> will not affect for reboot the server also.
+
+Zones - group all of our rules inside of the zones.
+
+[root@susi etc]# firewall-cmd --get-zones  ==> List of available zones… 
+block dmz drop external home internal public trusted work
+[root@susi etc]#
+
+	
+[root@susi etc]# firewall-cmd --get-default-zone  ==> get default zone details
+public
+[root@susi etc]#
+
+
+[root@susi etc]# firewall-cmd --list-all  ==> list of the firewall ports allowed 
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s3 enp0s9
+  sources:
+  services: ssh dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]#
+
+Add the source to the particular zone :-
+
+[root@susi etc]# firewall-cmd --zone=home --list-all
+home
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: ssh mdns samba-client dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]# firewall-cmd --zone=home --add-source=192.168.1.0/24 ==> Tempory . This will disapper after firewalld reload
+success
+[root@susi etc]# firewall-cmd --zone=home --list-all
+home (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources: 192.168.1.0/24
+  services: ssh mdns samba-client dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]#
+
+
+[root@susi etc]# firewall-cmd --reload
+success
+[root@susi etc]# firewall-cmd --zone=home --permanent  --add-source=192.168.1.0/24 ==> Permanent one
+success
+[root@susi etc]# firewall-cmd --reload  ==> Permanent will appear after reload the firewalld 
+success
+[root@susi etc]# firewall-cmd --zone=home --list-all
+home (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources: 192.168.1.0/24
+  services: ssh mdns samba-client dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]#
+
+
+Reload firewalld :-
+
+
+[root@susi etc]# firewall-cmd --reload
+success
+[root@susi etc]#
+
+
+Httpd ports add :-
+
+
+#yum install -y httpd
+#systemctl start httpd
+#systemctl enable httpd
+
+Add port 80 on public zone
+
+[root@susi etc]# firewall-cmd --permanent --add-port=80/tcp
+success
+[root@susi etc]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s3 enp0s9
+  sources:
+  services: ssh dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]# firewall-cmd --reload
+^[[Asuccess
+[root@susi etc]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s3 enp0s9
+  sources:
+  services: ssh dhcpv6-client
+  ports: 80/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@susi etc]#
+
+
+#firewall-config   ==> GUI based
+
+[root@susi etc]# firewall-cmd --panic-on ==> lock all and will allow only local console
+[root@susi etc]# firewall-cmd --query-panic
+no
+[root@susi etc]#
+
+
+
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_permission description</title>
+</head>
+<body>
+
+d - directory<br>
+- -  File<br>
+l  - symbolic link<br><br>
+<img alt="permission" src="permission.png">
+
+
+
+
+421 =  7 - rwx <br>
+400 = 4 - r--   ==> octal value ==> read=4,write=2,execute=1<br><br>
+
+
+Default permission is defined on umask<br><br>
+
+
+#chmod u(or)g(or)o<br>
+#chmod u-wr test   <== this will remove wr permission from test file<br>
+#chmod 700 test  ==> oc<br><br>
+
+
+#mkdir bank<br>
+#cd bank<br>
+#mkdir account<br>
+#cd ../<br>
+#groupadd bank<br><br>
+
+#chown user:group file_director_name<br>
+#chown :bank bank   ==> bank directory group permission change<br>
+#chmod o-rw bank ==> removed other permission<br>
+#chmod -R g+w bank  ==> recursively <br>
+#chown  -R  :bank bank ==> recursively <br><br>
+
+Disable execute permission recursively except the directory.X will set execute permssion to the directory not file.<br>
+#chmod ug-x bank<br>
+#chmod ug+X bank<br><br>
+
+Change ownership to all (u,g,o)<br><br>
+
+#chmod a+r bank  ==> all <br><br>
+
+Setuid :-<br><br>
+
+When a command or script with SUID bit set is run, its effective UID becomes that of the owner of the file, rather than of the user who is running it.<br><br>
+
+#ls -l /etc/passwd<br>
+#chmod u+s test<br>
+#chmod 4500 test  ==> 4 represent as setuid<br><br>
+
+Setgid :-<br><br>
+
+when the script or command with SGID on is run, it runs as if it were a member of the same group in which the file is a member.<br><br>
+
+
+#chmod g+s test<br>
+#chmod 2500 test<br>
+
+Stickybit :-<br><br>
+
+Prevent the other user from deleting the file and directory.<br>
+/var/tmp and /tmp<br><br>
+
+
+#chmod +t test<br>
+#chmod 1777  test<br><br>
+
+
+
+
+
+</body>
+</html>

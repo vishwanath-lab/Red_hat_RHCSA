@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_packagemanagement</title>
+</head>
+<body>
+<pre>
+YUM :-
+=====
+YUM is the package management tool… YUM will install package with dependencies.
+
+/etc/yum.repos.d/ ====> yum repo configuration directory.
+
+#yum check-update  ==> check for updates
+
+#yum upgrade -y   ==> all the available package update
+
+#yum search httpd ==> search package available or not..Search package details with description.
+
+#yum search all httpd ===> search package name,summary, package description filed,package detals,URL
+
+#yum info https ==> information about package 
+
+#yum install httpd -y ==> install httpd with dependency 
+
+#yum list installed ==> list all installed packages
+#yum whatprovides /var/www ==> which package provided /var/www directory
+
+#yum remove httpd ==> remove package with dependency..
+
+#yum clean all ==> cleanup caches 
+
+============================================================
+
+RPM 
+=====
+
+RPM used to install individual software packages.This will not install dependency.
+
+#yumdonwloader httpd or nano ==> download httpd package from rhel repo
+
+#rpm -ivh httpd.XX  ==> install
+#rpm -Uvh httpd.XX   ==> Upgrade
+#rpm -qa httpd ===> query
+#rpm -ql nano   ==> all file installed during nano installation
+#rpm -e httpd ==> erase package
+
+
+
+</pre>
+</body>
+</html>

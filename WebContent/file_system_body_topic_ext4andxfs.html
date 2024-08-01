@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>file_system_body_topic_ext4andxfs</title>
+</head>
+<body>
+<pre>
+
+Create partition :-
+
+#fdisk /dev/sdb
+
+Create new partition 
+
+EXT4 :-
+
+#mkfs.ext4 /dev/sdb1
+
+XFS :-
+
+#mkfs.xfs /dev/sdb1
+
+
+Fsck will not run with mounted file system.
+
+#fsck /dev/sdb1
+
+Details about file system :-
+
+#dump2fs /dev/sdb1  ==> ext file system
+#xfs_info /dev/sdb1  ==> xfs file system
+
+Repair xfs file system :-
+
+#xfs_repair /dev/sdb1 
+
+
+
+
+
+</pre>
+</body>
+</html>

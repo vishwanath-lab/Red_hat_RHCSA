@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_hardandsymboliclink description</title>
+</head>
+<body>
+
+<h3>Link to other file on the system</h3>
+
+<h4>Symbolic link :-</h4>
+
+Like windows short link.<br>
+Symbolic link can create across the file system.<br>
+Symb link have full permission but ultimatly this have only target permission and will not provide full permission to edit.<br><br>
+
+#ln -s taget link_name<br>
+#ln -s /etc/motd motd1<br>
+#rm motd1 --> this won't harm the original file<br>
+#rm /etc/motd --> this will broke the motd link file<br>
+
+<h4>Hard link :-</h4>
+
+Link to specific inode location on our file system..Hard link can be created inside the same file system.<br><br>
+
+If you change the permission to one file and also automatically change to other file.<br>
+Remove original file wont affect hard link file because it link to the inode.<br><br>
+
+#ln motd motd1<br>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

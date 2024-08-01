@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>file_system_body_topic_acl</title>
+</head>
+<body>
+
+<pre>
+Access Control List - ACL
+
+#useradd user2
+
+#cd /tmp
+#mkdir :dir1,dir2}; touch {f1,f2,f3}   ==> all should have root:root permission
+
+Not all user have permission to access to above files and directory. We have to go for ACL to provide access.
+
+
+User2 should access to above f1
+
++ -- means acl
+
+#setfacl  -m u:user2:rw f1 
+#setfacl  -m g:group2:rw f1 
+#setfacl  -R -m g:group2:rwx,u:user1:rwx dir1  ==> recurssively
+-m - modify
+-u - user
+-g - group
+
+#getfacl ==> get status of acl
+
+
+
+</pre>
+</body>
+</html>

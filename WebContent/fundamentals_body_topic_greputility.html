@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_greputility description</title>
+</head>
+<body>
+
+Allows us to search specific pattern. We will use grep for searching pattern in the log files and analyzing.
+
+<ol>
+<li><b>Grep only start with commented items</b><br>
+	# grep '^#' /etc/profile
+</li>
+<li>
+	<b>Grep the uid without case sensitive</b><br> 
+	grep -i 'uid' /etc/profile
+</li>
+<li>
+<b>Search root user available </b><br>
+	
+	[root@susi etc]# grep root /etc/passwd<br>
+	root:x:0:0:root:/root:/bin/bash
+</li>
+<li>
+<b>Ignore commented line and print remaining </b><br>
+	[root@susi etc]# grep -v '^#' /etc/profile<br>
+	-v, --invert-match
+</li>	
+<li>
+<b>Grep pattern in /var/log/secure file</b>	
+</li>
+<li>
+	<b>Grep all the line end with RX ..</b><br>
+	$ - match the ending position on the string<br>
+	[root@susi etc]# grep 'RX$' /var/log/messages<br>
+	Aug 13 09:05:39 susi kernel: e1000: enp0s3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX<br>
+	Aug 13 09:05:39 susi kernel: e1000: enp0s8 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX<br>
+	Aug 13 09:08:53 susi kernel: e1000: enp0s3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX<br>
+</li>
+<li>
+	<b>Grep all the pattern not match with particular pattern.</b><br>
+	[root@susi etc]# grep '[^RX]' /var/log/messages
+</li>
+</ol>
+
+
+
+
+</body>
+</html>

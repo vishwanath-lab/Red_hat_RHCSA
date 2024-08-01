@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_target</title>
+</head>
+<body>
+
+<pre>
+Previous Redhat version had SysV init to taken care for system runlevels. Run level from 0 t0 6.
+
+RHEL 7 runlevels has replaced with systemd targets.
+
+Systemd targets are represented by target units. Target units end with the .target<br>
+<img alt="target01" src="target01.png">
+
+
+
+
+#systemctl get-default  ==> get the default target 
+
+Change :-
+
+#systemctl set-default graphical.target
+
+If you reboot and the default will be graphical.target
+
+
+
+</pre>
+</body>
+</html>

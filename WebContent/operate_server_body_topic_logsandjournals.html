@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>operate_server_body_topic_logsandjournals description</title>
+</head>
+<body>
+
+<h3>Log file :-</h3>
+
+/etc/rsyslog.conf --> configuration file<br>
+Below logs is maintained by syslog or rsyslog<br><br>
+
+#cd /var/log ==> all log files available <br><br>
+
+#tail -f messages ==> real time update<br>
+#less messaged ==> last messages<br>
+#head <br>
+#tail -n 20 messages => last 20 lines<br><br>
+
+<h3>Journals :-</h3>
+
+Journald responsible for journal logs<br>
+Journald will collect all the system logs..<br><br>
+
+#journalctl   ==> dump all the logs<br><br>
+
+#cd /run/log/journal ==> all logs avilable under this directory. Its not persistent.Reboot time this will logs..<br><br>
+
+<h3>Permenent store journald logs files :-</h3>
+
+#cd /etc/systemd/ <br>
+#vi journald.conf<br><br>
+
+Uncommand below line<br>
+Storage=auto <br>
+Save and reload the systemd daemon<br>
+#systemctl reload systemd<br><br>
+
+After above change all the journal logs will be stored on /var/log/journal directory<br><br>
+
+
+#journalctl -n ==> display last 10 line of journal logs<br>
+#journalctl -xn  ==> with additional explanation (x) <br>
+
+#journalctl -f  ==> real time<br><br>
+
+#journalctl -p info ===> information<br>
+#journalctl --since=yesterday  ==> from yesterday<br><br>
+
+
+<h3>Information about our boot process :-</h3>
+
+#systemd-analyze  ==> how fast our system boot process has booted<br>
+#systemd-analyze blame ==> detail <br><br>
+
+
+
+
+
+
+
+</body>
+</html>

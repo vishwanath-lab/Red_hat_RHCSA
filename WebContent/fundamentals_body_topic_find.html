@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_find description</title>
+</head>
+<body>
+
+
+
+#find /etc -name passwd <br>
+#find /etc/ -user <user_name>   ==> search the file owned by particular user<br>
+#find / -mtime -6  ==> all file modified within 6 days<br>
+#find / -mtime +6 ==> all file modified 6 days before<br>
+ #find /   ==> file all the files which have world wrx permssion<br>
+#find / -name test -type f ==> search test file alone not directory<br>
+#find / -user user1 -type f -exec ls -l {} \;  ==> search file owned by user1 and list using ls -l<br>
+
+#find / -user user1 -type f -exec cp {} /home/user2 \;  ==> copy all the file owned by user1 to user2 home directory<br>
+
+#find /log -type f -mtime +20 -name *.gz -exec rm {} \;  ===> delete all the file older than 20 days<br>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

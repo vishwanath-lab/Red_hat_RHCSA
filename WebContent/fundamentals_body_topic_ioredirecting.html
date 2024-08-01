@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_ioredirecting description</title>
+</head>
+<body>
+
+<h2>Input/Output Redirecting</h2>
+
+$cd /etc/<br>
+#more passwd<br>
+#more /etc/motd<br>
+#more issue<br><br>
+
+<h3>IO redirection :-</h3>
+
+#cat passwd >paawd.orig<br>
+>will over write the existing file<br>
+>> append with existing<br> 
+#cat passwd >> passwd.orig<br><br>
+
+<h3>Dump mysql DB:-</h3>
+
+#mysqldump table_name > backudb.sql --> backup<br>
+#mysql table_name < backupdb.sql --> restore<br>
+
+<h3>Standard error :-</h3>
+
+#estlrthjkdhy<br><br>
+
+Above display output is standard error<br><br>
+
+#aeteyyyseseht >output.txt <br><br>
+
+Above wont update any error on the output.txt since standard input have error.<br><br>
+
+#awrrhorreaprepo 2> output.txt<br><br>
+
+Above will update error inside the output.txt since we have used 2 for redirecting standard error.<br><br>
+
+/dev/null - <br>
+/dev/null redirects standard output (stdout) to /dev/null, which discards it.<br><br>
+
+
+2 > &1<br>
+2>&1 redirects standard error (2) to standard output (1)<br><br><br>
+
+
+
+#head /var/log/messages  <== display only first 10 lines<br>
+#head -n 60 messages <== display first 60 lines<br>
+#less messages <=== from last<br>
+#tail messages <=== last 10 messages<br>
+#tail -f messages <==== watch live logs<br>
+#tail -n 60 messages <== last 60 lines<br><br>
+
+
+
+</body>
+</html>

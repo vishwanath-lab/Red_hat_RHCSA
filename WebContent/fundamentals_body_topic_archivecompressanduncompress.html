@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fundamentals_body_topic_archivecompressanduncompress description</title>
+</head>
+<body>
+
+<ol>
+<li><h3>Tar is archival utility</h3>
+	[root@susi susi]# mkdir dir1<br>
+	[root@susi susi]# cd dir1<br>
+	[root@susi dir1]# touch {fil1,fil2,fil3,fil4}<br>
+	[root@susi dir1]# ls<br>
+	fil1  fil2  fil3  fil4<br>
+	[root@susi dir1]#<br>
+	[root@susi dir1]# cd ../<br>
+	[root@susi susi]# pwd<br>
+	/home/susi<br>
+	[root@susi susi]# touch test1 test2<br>
+	[root@susi susi]# <br>
+</li>
+<li><h3>#gzip</h3>
+	[root@susi susi]# ls<br>
+	dir1  test1  test2<br>
+	[root@susi susi]# gzip test1<br>
+	[root@susi susi]# ls<br>
+	dir1  test1.gz  test2<br>
+	[root@susi susi]#<br>
+</li>
+
+<li><h3>Uncompress</h3>
+	[root@susi susi]# ls<br>
+	dir1  test1.gz  test2<br>
+	[root@susi susi]# gunzip test1.gz<br>
+	[root@susi susi]#<br>
+</li>
+
+
+<li><h3>Compress the directory with content</h3>
+	[root@susi susi]# pwd<br>
+	/home/susi<br>
+	[root@susi susi]# ls<br>
+	dir1  test1  test2<br>
+	[root@susi susi]# tar -cvf dir.tar dir1/ test1 test2<br>
+	dir1/<br>
+	dir1/fil1<br>
+	dir1/fil2<br>
+	dir1/fil3<br>
+	dir1/fil4<br>
+	test1<br>
+	test2<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar  test1  test2<br>
+	[root@susi susi]#<br><br>
+	
+	Check the content inside the archived file<br><br>
+	
+	[root@susi susi]# tar -tf dir.tar<br>
+	dir1/<br>
+	dir1/fil1<br>
+	dir1/fil2<br>
+	dir1/fil3<br>
+	dir1/fil4<br>
+	test1<br>
+	test2<br>
+	[root@susi susi]#<br><br>
+	
+	Untar the archival file<br><br>
+	
+	[root@susi susi]# ls<br>
+	dir.tar<br>
+	[root@susi susi]# tar -xvf dir.tar<br>
+	dir1/<br>
+	dir1/fil1<br>
+	dir1/fil2<br>
+	dir1/fil3<br>
+	dir1/fil4<br>
+	test1<br>
+	test2<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar  test1  test2<br>
+	[root@susi susi]#<br>
+</li>
+
+<li><h3>Archive with gzip format</h3>
+	
+	[root@susi susi]# ls<br>
+	dir1  dir.tar  test1  test2<br>
+	[root@susi susi]# tar -czf dir.tar.gz dir1/<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar  dir.tar.gz  test1  test2<br>
+	[root@susi susi]#<br><br>
+	
+	Unarchive gzip file<br><br>
+	
+	[root@susi susi]# ls<br>
+	dir1  dir.tar.gz  test1  test2<br>
+	[root@susi susi]# rm -rf dir1<br>
+	[root@susi susi]#<br>
+	[root@susi susi]# tar -xzf dir.tar.gz<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar.gz  test1  test2<br>
+	[root@susi susi]#<br>
+</li>
+<li><h3>Unzip and extract gunzip file</h3>
+
+	[root@susi susi]# ls<br>
+	dir1  dir.tar.gz  test1  test2<br>
+	[root@susi susi]# gzip test1<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar.gz  test1.gz  test2<br>
+	[root@susi susi]# gunzip test1.gz<br>
+	[root@susi susi]# ls<br>
+	dir1  dir.tar.gz  test1  test2<br>
+	[root@susi susi]#<br>
+</li>
+</ol>
+	
+
+</body>
+</html>

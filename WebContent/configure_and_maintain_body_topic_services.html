@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_services</title>
+</head>
+<body>
+<pre>
+Systemd system and service manager is responsible for controlling how services are started, stopped..
+
+systemd process replaces the init process (quite literally, /sbin/init is now a symbolic link to /usr/lib/systemd/systemd)
+
+
+
+Start :-
+
+#systemctl start httpd
+
+Stop :-
+
+#systemctl stop httpd
+
+Status :-
+
+#systemctl status httpd
+
+Enable for make up during boot time :-
+
+#systemctl enable httpd
+
+Check unit service file status :-
+
+#systemctl list-unit-files --type=service |grep sshd
+
+Disable the service :-
+
+#systemctl disable httpd
+
+
+
+</pre>
+
+</body>
+</html>

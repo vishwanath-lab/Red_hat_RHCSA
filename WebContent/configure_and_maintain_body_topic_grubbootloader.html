@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_grubbootloader</title>
+</head>
+<body>
+<pre>
+Modify the boot loader :-
+===================
+
+Check available kernel 
+
+#yum list kernel
+
+#grub2-set-default 0 or 1 0r 2 ==> set default boot loader , 0 is most recent 1
+
+#grub2-set-default 1 ==> boot from previous kernel
+
+#reboot
+#uname -r ==> will be old kernel
+
+#grub2-set-default 0 ==> back to latest kernel
+
+
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>configure_and_maintain_body_topic_repositories</title>
+</head>
+<body>
+<pre>
+A Software Repository is basically a database of application installation packages and upgrade packages available for your Linux distro. When you install Linux, your Software Centre will come pre-configured with a default Repository.
+
+Redhat Repository 
+
+Configuration file - /eytc/yum.repos.d/ 
+
+[iso-repo]  --> repo id or repo name
+Name=redhat 7 --> description
+Enabled = o or 1 --->  1 - enabled 0 - disable 
+Gpgcheck = 0 or 1 --> 1 - enable for gpg signature checking on packages ..gpg-key available on /etc/pki/rpm-gpg location..
+Baseurl --> url of the repo
+
+Add third pary  repo :-
+========
+#yum repolist all ==> list of all reposiotry
+#yum-config-manage --add-repo=http://dl.fedoraproject/pub/epel/7/x86_64  ==> configure repo
+#yum-config-manage --disable iso.repo(repo ID)  ===> diable repo
+#yum-config-manage --enable iso.repo ==> enable repo
+
+create local repo using ISO :-
+==================
+
+[root@rheltest ISO]# pwd
+/sysadmin/ISO
+[root@rheltest ISO]#
+[root@rheltest ISO]# ls -l rhel-5-server-dvd-up-20161102.iso
+-rw-r----- 1 ssuruli local 4130660352 Nov  2 14:31 rhel-5-server-dvd-up-20161102.iso
+[root@rheltest ISO]#mount -o loop rhel.iso /mnt/iso
+
+2)Create local repo.
+
+[root@rheltest yum.repos.d]# more iso.repo
+[ISO]
+baseurl=file:///mnt/iso
+gpgcheck=0
+enabled=1
+[root@rheltest yum.repos.d]#
+
+#yum repolist  ==> will display current repo list
+#yum search httpd
+
+
+GPGkey :-
+======
+
+enable for gpg signature checking on packages ..gpg-key available on /etc/pki/rpm-gpg location..If you enable gpgcheck=1 and you have to add gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7<GPG of distribution> 
+
+
+#cd /etc/pki/rpm-gpg
+#wget http://d1.redoraproject.org/pub/epel/7/x86_64/
+
+#vi repo.iso
+Gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7<GPG of distribution> 
+
+#yum repolist  ==> will display repo list
+
+#yum install httpd ==> this will check verify of gpg 
+
+</pre>
+</body>
+</html>
